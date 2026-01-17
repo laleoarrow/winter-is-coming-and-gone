@@ -1,102 +1,47 @@
 # Winter is Coming and Gone Theme
 
-基于 "Winter is Coming (Dark Blue)" 主题，增强了选中文本的高亮效果。
-
-已内置原始 "Winter is Coming (Dark Blue)" 主题文件（johnpapa.winteriscoming v1.4.4），无需额外安装基底主题。
+一款基于 Winter is Coming (Dark Blue) 的暗色主题，强化了选区、搜索匹配和词高亮。已内置原始 Dark Blue 配色（来自 johnpapa.winteriscoming v1.4.4），无需额外安装基底主题。
 
 ## 特性
+- 亮眼的蓝色光晕选区和词高亮
+- 更清晰的搜索匹配提示
+- 内置基底主题，开箱即用
 
-- 🔵 蓝色光晕效果的词语高亮
-- ✨ 更清晰的选中区域显示
-- 🔍 优化的搜索匹配高亮
+## 安装
+- **VS Code Marketplace**：待上架后，可在扩展市场搜索 “Winter is Coming and Gone Theme” 直接安装。
+- **VSIX 手动安装**：已有 `.vsix` 时执行 `code --install-extension winter-is-coming-and-gone-1.0.0.vsix`。
+- **源码安装**：
+  ```bash
+  git clone git@github.com:laleoarrow/winter-is-coming-and-gone.git
+  cp -r winter-is-coming-and-gone ~/.vscode/extensions/
+  ```
+  重启 VS Code 后在 `Cmd+K Cmd+T`（或 `Ctrl+K Ctrl+T`）中选择主题。
 
-## 安装方式
-
-### 方式 1：直接复制到扩展目录（推荐）
-
-```bash
-cp -r /Users/leoarrow/Project/mypackage/winter-is-coming-and-gone ~/.vscode/extensions/
-```
-
-重启 VS Code 后，使用 `Cmd+K Cmd+T` 选择 "Winter is Coming and Gone Theme"。
-
-### 方式 2：打包安装
-
-```bash
-# 安装打包工具（首次）
-npm install -g @vscode/vsce
-
-# 打包
-cd /Users/leoarrow/Project/mypackage/winter-is-coming-and-gone
-vsce package
-
-# 安装 .vsix 文件
-code --install-extension winter-is-coming-and-gone-1.0.0.vsix
-```
-
-## 使用后的配置清理
-
-安装主题后，你可以从 `settings.json` 中**删除**：
-
+## 设置清理
+若之前在 `settings.json` 里手动配置过选区/高亮颜色，安装本主题后可删除 `workbench.colorCustomizations` 中相关条目，避免覆盖主题：
 ```jsonc
-// 删除整个 workbench.colorCustomizations 块
 "workbench.colorCustomizations": {
-    "editor.selectionBackground": "#4A90E2AA",
-    // ... 这里的所有内容都可以删掉
+  // 安装主题后可删除整个块
 }
 ```
-
-然后**修改主题名称**：
-
+然后把 `workbench.colorTheme` 改为：
 ```jsonc
 "workbench.colorTheme": "Winter is Coming and Gone Theme"
 ```
 
-⚠️ **注意**：其他编辑器配置（字体、字号、tab大小等）需要保留在 settings.json 中，它们不属于主题范围。
-
-## 备份完整设置（可选）
-
-如果想同时备份所有编辑器设置：
-
+## 开发者打包/发布
+需要 Node 18+ 和 npm，以及 VS Code Marketplace 的 PAT（权限：Marketplace Manage + Packaging Read/Write）。
 ```bash
-# 备份 settings.json
-cp ~/Library/Application\ Support/Code/User/settings.json \
-   /Users/leoarrow/Project/mypackage/winter-is-coming-and-gone/my-settings.json
+# 打包（不装全局模块）
+npx @vscode/vsce package
 
-# 备份 keybindings.json
-cp ~/Library/Application\ Support/Code/User/keybindings.json \
-   /Users/leoarrow/Project/mypackage/winter-is-coming-and-gone/my-keybindings.json
+# 登录发布者（首次）
+npx @vscode/vsce login leoarrow   # 按提示粘贴 PAT
+
+# 发布
+npx @vscode/vsce publish
 ```
+若只需本地安装，可跳过登录/发布步骤，直接使用生成的 `.vsix`。
 
-新电脑恢复：
-```bash
-cp my-settings.json ~/Library/Application\ Support/Code/User/settings.json
-cp my-keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-```
-
-## 发布到 GitHub
-
-```bash
-cd /Users/leoarrow/Project/mypackage/winter-is-coming-and-gone
-git init
-git add .
-git commit -m "Initial commit: Winter is Coming and Gone Theme"
-git remote add origin https://github.com/你的用户名/winter-is-coming-and-gone.git
-git branch -M main
-git push -u origin main
-```
-
-## 发布到 VS Code Marketplace
-
-1. 访问 https://marketplace.visualstudio.com/manage
-2. 创建发布者账号并获取 Personal Access Token
-3. 发布：
-
-```bash
-vsce login leoarrow
-vsce publish
-```
-
-## 换电脑后的安装
-
-只需要复制这个文件夹到新电脑的 `~/.vscode/extensions/` 目录即可。
+## 鸣谢
+基于 johnpapa 的 Winter is Coming 主题（Dark Blue 方案）。
