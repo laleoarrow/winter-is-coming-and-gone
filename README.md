@@ -36,7 +36,7 @@
 npx @vscode/vsce package
 
 # 登录发布者（首次）
-npx @vscode/vsce login leoarrow   # 按提示粘贴 PAT
+npx @vscode/vsce login laleoarrow   # 按提示粘贴 PAT
 
 # 发布
 npx @vscode/vsce publish
