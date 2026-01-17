@@ -1,0 +1,22 @@
+{
+  "name": "winter-is-coming-and-gone",
+  "displayName": "Winter is Coming and Gone Theme",
+  "description": "Winter is Coming with enhanced selection highlights",
+  "version": "1.0.0",
+  "publisher": "leoarrow",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Winter is Coming and Gone Theme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/winter-is-coming-and-gone.json"
+      }
+    ]
+  }
+}
